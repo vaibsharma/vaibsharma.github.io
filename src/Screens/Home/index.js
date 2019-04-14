@@ -3,26 +3,49 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Container, Grid, Header, Menu, Message } from 'semantic-ui-react';
+import { Divider, Icon, Header, Message, Item, Label } from 'semantic-ui-react';
+import { Row, Column, Space } from "../../Components/";
 import { initApp } from "../../Actions";
 
-const links = [
+import Cuemath from "../../Images/cuemath.jpg";
+import GSoC from "../../Images/gsoc.png";
+import Unacademy from "../../Images/unacademy.png";
+
+const workExperience = [
     {
-        url: "https://github.com/vaibsharma",
-        text: "Github"
+        title: "Unacademy",
+        image: Unacademy,
+        subtitle: "OpenHack, Trial Week Intern March 2019",
+        content: "Was called for a Unacademy's engineering program called OpenHack in Bengaluru." +
+            "11 students were selected from the country's best technological institutes. I worked on " +
+            "scalability and performance issues of Unacademy's mobile app. Among the rest 5 students " +
+            "who received the full-time Software Engineer job offer after the interviews."
     },
     {
-        url: "https://linkedin.com/in/vaibsharma",
-        text: "Linkedin"
+        title: "Cuemath",
+        image: Cuemath,
+        subtitle: "Software Development Intern, May 2018 - August 2018",
+        content: "Worked on the microservices hosted inside the Docker containers, Cueteacher and" +
+            " Cueparent Mobile application. Made the Parent-Teacher-Student interaction flow from the scratch." +
+            " Added Voice OTP feature, all from mobile to auth service. Lots of other fixes in internal tools " +
+            "in the Cuemath backend application."
     },
     {
-        url: "https://www.spoj.com/users/techobist/",
-        text: "SPOJ"
+        title: "Google Summer of Code",
+        image: GSoC,
+        subtitle: "Australian Open Source Software Innovations and Education.",
+        content: "In 2017, my proposal for the Carbon Footprint project was accepted by the AOSSIE " +
+            "in the Google Summer of Code. I worked on the Carbon Footprint webextension and made Carbon Footprint " +
+            "RESTful APIs from the scratch. Since then I'm involved with AOSSIE as the project mentor for the " +
+            "students participating in this prestigious program. I mentor for Carbon Footprint projects " +
+            "and CrowdAlert webapp at AOSSIE."
     },
-    {
-        url: "https://www.facebook.com/techobist/",
-        text: "Facebook"
-    }
+
+];
+
+const technologies = [
+    "C++", "NodeJS", "Django", "Flask", "Docker", "Heroku", "Git", "Markup", "LATex", "ReactJS", "ReactNative", "Redux",
+    "Linux", "MacOS", "CI/CD", "Jenkins"
 ];
 
 class Home extends Component {
@@ -44,31 +67,16 @@ class Home extends Component {
     render() {
         console.log(this.props.startApp.onUpdate.getTime(),this.props.startApp.onStart.getTime());
         return (
-            <Container style={styles.container}>
-                <div>
-                    <Grid textAlign={"center"} columns={2} style={styles.header}>
-                        <Grid.Row>
-                            <Grid.Column mobile={16} tablet={8} computer={8} style={styles.grid}>
-                                <Header as='h1'>Vaibhav Sharma</Header>
-                            </Grid.Column>
-                            <Grid.Column mobile={16} tablet={8} computer={8} style={styles.grid}>
-                                <Menu compact>
-                                    {links.map(({url, text}, key) => (
-                                        <Menu.Item key={key}>
-                                        <a href={url} target={'_blank'}>{text}</a>
-                                        </Menu.Item>
-                                    ))}
-                                </Menu>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+            <div>
+                    <Space/>
                     <p style={styles.p}>
                         Hi! I am Vaibhav Sharma (vaibsharma). I am a final year Engineering Physics student from <b>Delhi
                         Technological University</b> who loves Physics as well as enjoy Programming. I work on system
                         architecture, web and mobile applications. I've been a GSoC student at <b>AOSSIE(Australian Open
                         Source Software
-                        Innovations and Educations)</b> in 2017 and mentor in 2018. Will be joining <b>Unacademy</b> as a
-                        Software Engineer from June 2019.
+                        Innovations and Educations)</b> in 2017 and mentor in 2018. I'll be joining <b>Unacademy</b> as a
+                        Software Engineer from June 2019. I like to play cricket, go to gym and read books in my leisure
+                        time.
                     </p>
                     <Message info>
                         <Message.Header>Am I available for Freelancing?</Message.Header>
@@ -76,31 +84,66 @@ class Home extends Component {
                             <a style={styles.a} href="mailto:vaib.sharma44@gmail.com"><b> mail</b> .</a>
                         </p>
                     </Message>
+                <Space/>
+                <div>
+                    <Header as={"h1"}> Work Experience </Header>
+                    <Row>
+                        {workExperience.map(({title, image, subtitle, content}, key) => (
+                            <Column key={key}>
+                                <Row>
+                                    <Column mobile={4} tablet={4} computer={4}>
+                                        <Item.Image size='tiny' src={image} />
+                                    </Column>
+                                    <Column mobile={12} tablet={12} computer={12}>
+                                        <Header as={"h2"}>{title}</Header>
+                                        <span>{subtitle}</span>
+                                        <Space />
+                                        <p> {content}</p>
+                                    </Column>
+                                </Row>
+                            </Column>
+                        ))}
+                    </Row>
                 </div>
-            </Container>
+                <Space/>
+                <div>
+                    <Header as={"h1"}> Technologies </Header>
+                    <Space/>
+                    <Row>
+                        {technologies.map((value, key) => (
+                            <Label key={key} size={"medium"}>
+                                {value}
+                            </Label>
+                        ))}
+                    </Row>
+                </div>
+                <Space style={{ height: "5em" }}/>
+                <Divider/>
+                <Space/>
+                <div>
+                    <Header size={"large"} textAlign={"center"}>
+                        For my blogs please visit <a href="https://techobistword.wordpress.com/">wordpress.</a>
+                    </Header>
+                </div>
+                <Header size={"medium"} textAlign={"center"}>
+                    vaibsharma <a style={styles.a} href={"https://github.com/vaibsharma"}> <Icon name={"github"}/> </a>
+                </Header>
+                <Space/>
+                <Space/>
+            </div>
         );
     }
 }
 
 const styles = {
-    container : {
-        marginLeft: '2em',
-        marginRight: '2em',
-        marginTop: '2em'
-    },
-    header:{
-      marginBottom: '1.5em'
-    },
     p: {
         fontSize: '1.3em',
-        lineHeight: '1.4em'
+        lineHeight: '1.4em',
+        marginTop: '1em'
     },
     a: {
         textDecoration: 'none',
         color: 'inherit'
-    },
-    grid:{
-        marginTop: '1em'
     }
 };
 
