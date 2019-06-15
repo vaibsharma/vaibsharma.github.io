@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Divider, Icon, Header, Message, Item, Label } from 'semantic-ui-react';
-import { Row, Column, Space } from "../../Components/";
+import { Row, Column, Space, BlogList } from "../../Components/";
 import { initApp } from "../../Actions";
 
 import Cuemath from "../../Images/cuemath.jpg";
@@ -12,6 +12,13 @@ import GSoC from "../../Images/gsoc.png";
 import Unacademy from "../../Images/unacademy.png";
 
 const workExperience = [
+    {
+        title: "Unacademy",
+        image: Unacademy,
+        subtitle: "Software Developer, June 2019 - Present",
+        content: "Working on Unacademy Live classes for educators and students."
+
+    },
     {
         title: "Unacademy",
         image: Unacademy,
@@ -43,6 +50,8 @@ const workExperience = [
 
 ];
 
+const BlogRSSFeedUrl = 'https://techobistword.wordpress.com/feed/?format=xml';
+
 const technologies = [
     "C++", "NodeJS", "Django", "Flask", "Docker", "Heroku", "Git", "Markup", "LATex", "ReactJS", "ReactNative", "Redux",
     "Linux", "MacOS", "CI/CD", "Jenkins"
@@ -64,69 +73,83 @@ class Home extends Component {
         this.props.actions.initApp();
     }
 
+    renderIntroduction(){
+        return(
+            <p style={styles.p}>
+                Hi! I am Vaibhav Sharma (vaibsharma). I am a final year Engineering Physics student from <b>Delhi
+                Technological University</b> who loves Physics as well as enjoy Programming. I work on system
+                architecture, web and mobile applications. I've been a GSoC student at <b>AOSSIE(Australian Open
+                Source Software
+                Innovations and Educations)</b> in 2017 and mentor in 2018. I'll be joining <b>Unacademy</b> as a
+                Software Engineer from June 2019. I like to play cricket, go to gym and read books in my leisure
+                time.
+            </p>
+        )
+    }
+
+    renderWorkExperience(){
+        return(
+            <div>
+                <Header as={"h1"}> Work Experience </Header>
+                <Row>
+                    {workExperience.map(({title, image, subtitle, content}, key) => (
+                        <Column key={key}>
+                            <Row>
+                                <Column mobile={4} tablet={4} computer={4}>
+                                    <Item.Image size='tiny' src={image}/>
+                                </Column>
+                                <Column mobile={12} tablet={12} computer={12}>
+                                    <Header as={"h2"}>{title}</Header>
+                                    <span>{subtitle}</span>
+                                    <Space/>
+                                    <p> {content}</p>
+                                </Column>
+                            </Row>
+                        </Column>
+                    ))}
+                </Row>
+            </div>
+        );
+    }
+
+    renderTechnologies(){
+        return(
+            <div>
+                <Header as={"h1"}> Technologies </Header>
+                <Space/>
+                <Row style={{marginLeft: 0}}>
+                    {technologies.map((value, key) => (
+                        <Label key={key} size={"medium"} style={styles.technologies}>
+                            {value}
+                        </Label>
+                    ))}
+                </Row>
+            </div>
+        )
+    }
+
     render() {
         console.log(this.props.startApp.onUpdate.getTime(),this.props.startApp.onStart.getTime());
         return (
-            <div>
-                    <Space/>
-                    <p style={styles.p}>
-                        Hi! I am Vaibhav Sharma (vaibsharma). I am a final year Engineering Physics student from <b>Delhi
-                        Technological University</b> who loves Physics as well as enjoy Programming. I work on system
-                        architecture, web and mobile applications. I've been a GSoC student at <b>AOSSIE(Australian Open
-                        Source Software
-                        Innovations and Educations)</b> in 2017 and mentor in 2018. I'll be joining <b>Unacademy</b> as a
-                        Software Engineer from June 2019. I like to play cricket, go to gym and read books in my leisure
-                        time.
-                    </p>
-                    <Message info>
-                        <Message.Header>Am I available for Freelancing?</Message.Header>
-                        <p>Yes, I am available. If you have a project and would like me to work on it, drop me a
-                            <a style={styles.a} href="mailto:vaib.sharma44@gmail.com"><b> mail</b> .</a>
-                        </p>
-                    </Message>
+            <div style={styles.container}>
                 <Space/>
-                <div>
-                    <Header as={"h1"}> Work Experience </Header>
-                    <Row>
-                        {workExperience.map(({title, image, subtitle, content}, key) => (
-                            <Column key={key}>
-                                <Row>
-                                    <Column mobile={4} tablet={4} computer={4}>
-                                        <Item.Image size='tiny' src={image} />
-                                    </Column>
-                                    <Column mobile={12} tablet={12} computer={12}>
-                                        <Header as={"h2"}>{title}</Header>
-                                        <span>{subtitle}</span>
-                                        <Space />
-                                        <p> {content}</p>
-                                    </Column>
-                                </Row>
-                            </Column>
-                        ))}
-                    </Row>
-                </div>
+                {this.renderIntroduction()}
                 <Space/>
-                <div>
-                    <Header as={"h1"}> Technologies </Header>
-                    <Space/>
-                    <Row>
-                        {technologies.map((value, key) => (
-                            <Label key={key} size={"medium"}>
-                                {value}
-                            </Label>
-                        ))}
-                    </Row>
-                </div>
+                {this.renderWorkExperience()}
+                <Space/>
+                {this.renderTechnologies()}
                 <Space style={{ height: "5em" }}/>
                 <Divider/>
                 <Space/>
                 <div>
-                    <Header size={"large"} textAlign={"center"}>
-                        For my blogs please visit <a href="https://techobistword.wordpress.com/">wordpress.</a>
+                    <Header as={"h1"}> Blogs </Header>
+                    <BlogList url={BlogRSSFeedUrl}/>
+                    <Header size={"large"}>
+                        For more blogs please visit <a href="https://techobistword.wordpress.com/">wordpress.</a>
                     </Header>
                 </div>
                 <Header size={"medium"} textAlign={"center"}>
-                    vaibsharma <a style={styles.a} href={"https://github.com/vaibsharma"}> <Icon name={"github"}/> </a>
+                    Made with ❤️ by <a style={styles.a} href={"https://github.com/vaibsharma"}> vaibsharma </a>
                 </Header>
                 <Space/>
                 <Space/>
@@ -144,6 +167,13 @@ const styles = {
     a: {
         textDecoration: 'none',
         color: 'inherit'
+    },
+    container:{
+      marginLeft: '1em',
+      marginRight: '1em'
+    },
+    technologies:{
+        marginTop: '1em'
     }
 };
 
