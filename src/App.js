@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import {Row, Column} from "./Components";
 import Home  from "./Screens/Home"
-import {Column, Row} from "./Components";
 import {Container, Header, Menu} from "semantic-ui-react";
 
 const links = [

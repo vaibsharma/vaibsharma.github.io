@@ -7,5 +7,5 @@ export {
     Row,
     BlogList,
     Column,
-    Space,
+    Space
 };

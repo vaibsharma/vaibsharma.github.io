@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Divider, Icon, Header, Message, Item, Label } from 'semantic-ui-react';
-import { Row, Column, Space, BlogList } from "../../Components/";
+import { Divider, Header, Item, Label } from 'semantic-ui-react';
+import { Row, Column, Space, BlogList } from "../../Components"
 import { initApp } from "../../Actions";
 
 import Cuemath from "../../Images/cuemath.jpg";
@@ -16,17 +16,9 @@ const workExperience = [
         title: "Unacademy",
         image: Unacademy,
         subtitle: "Software Developer, June 2019 - Present",
-        content: "Working on Unacademy Live classes for educators and students."
-
-    },
-    {
-        title: "Unacademy",
-        image: Unacademy,
-        subtitle: "OpenHack, Trial Week Intern March 2019",
-        content: "Was called for a Unacademy's engineering program called OpenHack in Bengaluru." +
-            "11 students were selected from the country's best technological institutes. I worked on " +
-            "scalability and performance issues of Unacademy's mobile app. Among the rest 5 students " +
-            "who received the full-time Software Engineer job offer after the interviews."
+        content: "Building Unacademy's Live classes for educators and students on Unacademy Plus. " +
+            "Unacademy is an educational technology company based in Bangalore. " +
+            "It is a platform that offers online education in India."
     },
     {
         title: "Cuemath",
@@ -144,12 +136,13 @@ class Home extends Component {
                 <div>
                     <Header as={"h1"}> Blogs </Header>
                     <BlogList url={BlogRSSFeedUrl}/>
+                    <Space/>
                     <Header size={"large"}>
                         For more blogs please visit <a href="https://techobistword.wordpress.com/">wordpress.</a>
                     </Header>
                 </div>
                 <Header size={"medium"} textAlign={"center"}>
-                    Made with ❤️ by <a style={styles.a} href={"https://github.com/vaibsharma"}> vaibsharma </a>
+                    Made with <span>❤️</span> by <a style={styles.a} href={"https://github.com/vaibsharma"}> vaibsharma </a>
                 </Header>
                 <Space/>
                 <Space/>

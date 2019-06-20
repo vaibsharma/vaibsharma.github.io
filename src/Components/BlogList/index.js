@@ -3,7 +3,10 @@ import Parser from 'rss-parser';
 import PropTypes from 'prop-types';
 import {Header, Label} from "semantic-ui-react";
 
-import {Row, Column, Space } from "./../";
+import {Row, Column } from "Components";
+
+import {changePubDateToReadableDates } from "../../Utils";
+
 const RSSParser = new Parser({
 	headers: {
 		"Access-Control-Allow-Origin": "*",
@@ -34,8 +37,6 @@ export default class BlogList extends Component{
 
 			this.setState({
 				items: items
-			}, () => {
-				console.log(this.state);
 			})
 		})();
 	}
@@ -68,7 +69,7 @@ export default class BlogList extends Component{
 							{this.renderCategories(categories)}
 						</Column>
 						<Column mobile={12} tablet={6} computer={6}>
-							<Header size={"medium"}>{pubDate}</Header>
+							<Header size={"medium"}>{changePubDateToReadableDates(pubDate)}</Header>
 						</Column>
 					</Row>
 				))}
