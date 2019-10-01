@@ -3,7 +3,7 @@ import Parser from 'rss-parser';
 import PropTypes from 'prop-types';
 import {Header, Label} from "semantic-ui-react";
 
-import {Row, Column } from "Components";
+import {Row, Column} from "../";
 
 import {changePubDateToReadableDates } from "../../Utils";
 
