@@ -155,7 +155,8 @@ const styles = {
     p: {
         fontSize: '1.3em',
         lineHeight: '1.4em',
-        marginTop: '1em'
+        marginTop: '1em',
+        color: '#595959'
     },
     a: {
         textDecoration: 'none',
