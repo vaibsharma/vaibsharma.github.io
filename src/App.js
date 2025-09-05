@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import {Row, Column} from "./Components";
-import Home  from "./Screens/Home"
+import Home from "./Screens/Home"
+import Blog from "./Screens/Blog"
+import Reads from "./Screens/Reads"
+import BlogDetail from "./Screens/BlogDetail"
 import {Container, Header, Menu} from "semantic-ui-react";
 
 const links = [
     {
         url: "https://github.com/vaibsharma",
-        text: "Github"
+        text: "Github",
+        external: true
     },
     {
         url: "https://linkedin.com/in/vaibsharma",
-        text: "Linkedin"
+        text: "Linkedin",
+        external: true
     },
     {
-        url: "https://www.spoj.com/users/techobist/",
-        text: "SPOJ"
+        url: "/blog",
+        text: "Blogs",
+        external: false
     },
     {
-        url: "https://www.facebook.com/techobist/",
-        text: "Facebook"
+        url: "/reads",
+        text: "Reads",
+        external: false
     }
 ];
 
@@ -31,20 +38,27 @@ export default class App extends Component {
           <Container style={styles.container}>
               <Row textAlign={'center'}>
                   <Column>
-                      <Header as='h1'>Vaibhav Sharma</Header>
+                      <Header as='h1'><Link to="/" style={{color: 'inherit', textDecoration: 'none'}}>Vaibhav Sharma</Link></Header>
                   </Column>
                   <Column>
                       <Menu compact>
-                          {links.map(({url, text}, key) => (
+                          {links.map(({url, text, external}, key) => (
                               <Menu.Item key={key}>
-                                  <a href={url} target={'_blank'}>{text}</a>
+                                  {external ? (
+                                    <a href={url} target="_blank" rel="noopener noreferrer">{text}</a>
+                                  ) : (
+                                    <Link to={url}>{text}</Link>
+                                  )}
                               </Menu.Item>
                           ))}
                       </Menu>
                   </Column>
               </Row>
             <Switch>
-          <Route path={"/"} component={Home} />
+          <Route exact path={"/blog"} component={Blog} />
+          <Route path={"/blog/:slug"} component={BlogDetail} />
+          <Route path={"/reads"} component={Reads} />
+          <Route exact path={"/"} component={Home} />
         </Switch>
           </Container>
       </Router>

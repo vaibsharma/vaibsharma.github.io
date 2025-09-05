@@ -10,12 +10,31 @@ import { initApp } from "../../Actions";
 import Cuemath from "../../Images/cuemath.jpg";
 import GSoC from "../../Images/gsoc.png";
 import Unacademy from "../../Images/unacademy.png";
+import profile from "../../Images/profile.jpeg";
+import Uber from "../../Images/uber.png";
+import Udaan from "../../Images/udaan.jpeg";
 
 const workExperience = [
     {
+        title: "Uber",
+        image: Uber,
+        subtitle: "Software Engineer, April 2024 - Present",
+            content: "Building Uber's growth and marketing metrics across Uber's products. " +
+                "Uber is a ride-sharing company based in San Francisco. " +
+                "It is a platform that offers ride-sharing services."
+    },
+    {
+        title: "Udaan",
+        image: Udaan,
+        subtitle: "Software Engineer 3, December 2021 - April 2024",
+        content: "At Udaan, I led the development of PerceptPixel, a high-performance image processing platform powering real-time transformations, " +
+            "scalable storage, and CDN delivery. I built backend services, CI/CD pipelines, WordPress integration, and monitoring infrastructure, " +
+            "mentored engineers, and replaced third-party systems—saving $60k annually while ensuring high reliability and performance at scale."
+    },
+    {
         title: "Unacademy",
         image: Unacademy,
-        subtitle: "Software Developer, June 2019 - Present",
+        subtitle: "Software Developer, June 2019 - July 2021",
         content: "Building Unacademy's Live classes for educators and students on Unacademy Plus. " +
             "Unacademy is an educational technology company based in Bangalore. " +
             "It is a platform that offers online education in India."
@@ -67,15 +86,23 @@ class Home extends Component {
 
     renderIntroduction(){
         return(
-            <p style={styles.p}>
-                Hi! I am Vaibhav Sharma (vaibsharma). I am a final year Engineering Physics student from <b>Delhi
-                Technological University</b> who loves Physics as well as enjoy Programming. I work on system
-                architecture, web and mobile applications. I've been a GSoC student at <b>AOSSIE(Australian Open
-                Source Software
-                Innovations and Educations)</b> in 2017 and mentor in 2018. I'll be joining <b>Unacademy</b> as a
-                Software Engineer from June 2019. I like to play cricket, go to gym and read books in my leisure
-                time.
-            </p>
+
+                <Row style={{display: 'flex', alignItems: 'center', marginBottom: '20px', width: '100%', flexDirection: 'row', justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                    <Column mobile={12} tablet={12} computer={4} style={{marginTop: 0, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <Item.Image size='small' src={profile} circular={true}/>
+                    </Column>
+                    <Column mobile={12} tablet={12} computer={12} style={{marginTop: 0}}>
+                        <p style={styles.p}>
+                        Hi! I'm Vaibhav. I’m a <b >software engineer</b> passionate about building scalable systems, <b>AI/ML</b>, <b>Computer Vision</b>, and high-performance applications. 
+                        I currently work at Uber, where I design and implement complex real-time systems for growth and marketing metrics across Uber's products. 
+                        Previously, I’ve contributed to product and engineering at <b >Udaan</b> and <b >Unacademy</b>, mostly involved on the infrastructure and backend systems involving <b>storage</b>, <b>observability</b>, <b>websockets</b>, <b>live streaming</b> and <b>image processing</b>.
+                        <Space/>
+                        Outside work, I enjoy <b >cricket</b>, the <b>gym</b>, and exploring new technologies.
+                        <Space/>
+                        Currently, I'm passionate about <b>LLMs</b>, <b>Computer Vision</b> and AI infrastructure.
+                        </p>
+                    </Column>
+                </Row>
         )
     }
 
@@ -90,7 +117,7 @@ class Home extends Component {
                                 <Column mobile={4} tablet={4} computer={4}>
                                     <Item.Image size='tiny' src={image}/>
                                 </Column>
-                                <Column mobile={12} tablet={12} computer={12}>
+                                <Column mobile={12} tablet={12} computer={12} style={{marginTop: 0}}>
                                     <Header as={"h2"}>{title}</Header>
                                     <span>{subtitle}</span>
                                     <Space/>
@@ -142,7 +169,7 @@ class Home extends Component {
                     </Header>
                 </div>
                 <Header size={"medium"} textAlign={"center"}>
-                    Made with <span>❤️</span> by <a style={styles.a} href={"https://github.com/vaibsharma"}> vaibsharma </a>
+                    Cheers! <span role="img" aria-label="beer">🍺</span>
                 </Header>
                 <Space/>
                 <Space/>
@@ -152,19 +179,20 @@ class Home extends Component {
 }
 
 const styles = {
+    // suggest a better color for the text
     p: {
         fontSize: '1.3em',
         lineHeight: '1.4em',
         marginTop: '1em',
-        color: '#595959'
+        color: '#333'
     },
     a: {
         textDecoration: 'none',
         color: 'inherit'
     },
     container:{
-      marginLeft: '1em',
-      marginRight: '1em'
+      marginLeft: 0,
+      marginRight: 0
     },
     technologies:{
         marginTop: '1em'
