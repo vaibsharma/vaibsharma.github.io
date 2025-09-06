@@ -1,0 +1,39 @@
+{
+    "id": 1,
+    "slug": "building-scalable-image-processing-systems",
+    "title": "Building Scalable Image Processing Systems",
+    "excerpt": "Learn how to build high-performance image processing systems that can handle millions of requests per day using modern technologies and best practices.",
+    "author": "Vaibhav Sharma",
+    "date": "2024-01-15",
+    "readTime": "8 min read",
+    "category": "System Design",
+    "tags": ["Image Processing", "Microservices", "Performance", "Architecture"],
+    "image": "udaan",
+    "featured": true
+},
+{
+    "id": 2,
+    "slug": "understanding-microservices-architecture",
+    "title": "Understanding Microservices Architecture",
+    "excerpt": "A comprehensive guide to microservices patterns, best practices, and common pitfalls to avoid when building distributed systems.",
+    "author": "Vaibhav Sharma",
+    "date": "2024-01-10",
+    "readTime": "12 min read",
+    "category": "Architecture",
+    "tags": ["Microservices", "Distributed Systems", "Architecture", "Best Practices"],
+    "image": "uber",
+    "featured": false
+},
+{
+    "id": 3,
+    "slug": "ai-ml-in-production-lessons-learned",
+    "title": "AI/ML in Production: Lessons Learned",
+    "excerpt": "Real-world insights from deploying machine learning models in production environments, including common pitfalls and best practices.",
+    "author": "Vaibhav Sharma",
+    "date": "2024-01-05",
+    "readTime": "10 min read",
+    "category": "AI/ML",
+    "tags": ["Machine Learning", "Production", "Monitoring", "Best Practices"],
+    "image": "gsoc",
+    "featured": true
+}

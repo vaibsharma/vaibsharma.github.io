@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Divider, Header, Item, Label } from 'semantic-ui-react';
-import { Row, Column, Space, BlogList } from "../../Components"
+import { Header, Item, Label } from 'semantic-ui-react';
+import { Row, Column, Space } from "../../Components"
 import { initApp } from "../../Actions";
 
 import Cuemath from "../../Images/cuemath.jpg";
@@ -61,7 +61,6 @@ const workExperience = [
 
 ];
 
-const BlogRSSFeedUrl = 'https://techobistword.wordpress.com/feed/?format=xml';
 
 const technologies = [
     "C++", "NodeJS", "Django", "Flask", "Docker", "Heroku", "Git", "Markup", "LATex", "ReactJS", "ReactNative", "Redux",
@@ -94,8 +93,11 @@ class Home extends Component {
                     <Column mobile={12} tablet={12} computer={12} style={{marginTop: 0}}>
                         <p style={styles.p}>
                         Hi! I'm Vaibhav. I’m a <b >software engineer</b> passionate about building scalable systems, <b>AI/ML</b>, <b>Computer Vision</b>, and high-performance applications. 
-                        I currently work at Uber, where I design and implement complex real-time systems for growth and marketing metrics across Uber's products. 
-                        Previously, I’ve contributed to product and engineering at <b >Udaan</b> and <b >Unacademy</b>, mostly involved on the infrastructure and backend systems involving <b>storage</b>, <b>observability</b>, <b>websockets</b>, <b>live streaming</b> and <b>image processing</b>.
+                        I currently work at <b>Uber</b>, where we are building the next generation of growth and marketing products using GenAI.
+                        <Space/>
+                        Previously, I’ve contributed to product and engineering at <b >Udaan</b> and <b >Unacademy</b>, mostly working on the infrastructure and backend systems involving <b>storage</b>, <b>observability</b>, <b>websockets</b>, <b>live streaming</b> and <b>image processing</b>. 
+                        <Space/>
+                        My most accomplished project was <a href="https://perceptpixel.com/" target="_blank" rel="noopener noreferrer">PerceptPixel</a>, a high-performance image processing platform powering real-time transformations, scalable storage, and CDN delivery.
                         <Space/>
                         Outside work, I enjoy <b >cricket</b>, the <b>gym</b>, and exploring new technologies.
                         <Space/>
@@ -156,22 +158,11 @@ class Home extends Component {
                 <Space/>
                 {this.renderWorkExperience()}
                 <Space/>
-                {this.renderTechnologies()}
-                <Space style={{ height: "5em" }}/>
-                <Divider/>
                 <Space/>
-                <div>
-                    <Header as={"h1"}> Blogs </Header>
-                    <BlogList url={BlogRSSFeedUrl}/>
-                    <Space/>
-                    <Header size={"large"}>
-                        For more blogs please visit <a href="https://techobistword.wordpress.com/">wordpress.</a>
-                    </Header>
-                </div>
+                <Space/>
                 <Header size={"medium"} textAlign={"center"}>
-                    Cheers! <span role="img" aria-label="beer">🍺</span>
+                     <span role="img" aria-label="beer">📍</span> Bengaluru, India
                 </Header>
-                <Space/>
                 <Space/>
             </div>
         );
