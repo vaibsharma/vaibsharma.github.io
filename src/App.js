@@ -36,7 +36,7 @@ export default class App extends Component {
     return (
       <Router>
           <Container style={styles.container}>
-              <Row textAlign={'center'}>
+              <Row textAlign={'center'} style={{paddingTop: '2em'}}>
                   <Column>
                       <Header as='h1'><Link to="/" style={{color: 'inherit', textDecoration: 'none'}}>Vaibhav Sharma</Link></Header>
                   </Column>
@@ -70,6 +70,5 @@ const styles = {
     container : {
         marginLeft: '2em',
         marginRight: '2em',
-        marginTop: '2em'
     }
 };

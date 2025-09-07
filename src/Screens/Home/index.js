@@ -85,12 +85,11 @@ class Home extends Component {
 
     renderIntroduction(){
         return(
-
-                <Row style={{display: 'flex', alignItems: 'center', marginBottom: '20px', width: '100%', flexDirection: 'row', justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                <Row style={{display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
                     <Column mobile={12} tablet={12} computer={4} style={{marginTop: 0, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <Item.Image size='small' src={profile} circular={true}/>
                     </Column>
-                    <Column mobile={12} tablet={12} computer={12} style={{marginTop: 0}}>
+                    <Column mobile={16} tablet={16} computer={12} style={{marginTop: 0}}>
                         <p style={styles.p}>
                         Hi! I'm Vaibhav. I’m a <b >software engineer</b> passionate about building scalable systems, <b>AI/ML</b>, <b>Computer Vision</b>, and high-performance applications. 
                         I currently work at <b>Uber</b>, where we are building the next generation of growth and marketing products using GenAI.
@@ -108,62 +107,18 @@ class Home extends Component {
         )
     }
 
-    renderWorkExperience(){
-        return(
-            <div>
-                <Header as={"h1"}> Work Experience </Header>
-                <Row>
-                    {workExperience.map(({title, image, subtitle, content}, key) => (
-                        <Column key={key}>
-                            <Row>
-                                <Column mobile={4} tablet={4} computer={4}>
-                                    <Item.Image size='tiny' src={image}/>
-                                </Column>
-                                <Column mobile={12} tablet={12} computer={12} style={{marginTop: 0}}>
-                                    <Header as={"h2"}>{title}</Header>
-                                    <span>{subtitle}</span>
-                                    <Space/>
-                                    <p> {content}</p>
-                                </Column>
-                            </Row>
-                        </Column>
-                    ))}
-                </Row>
-            </div>
-        );
-    }
-
-    renderTechnologies(){
-        return(
-            <div>
-                <Header as={"h1"}> Technologies </Header>
-                <Space/>
-                <Row style={{marginLeft: 0}}>
-                    {technologies.map((value, key) => (
-                        <Label key={key} size={"medium"} style={styles.technologies}>
-                            {value}
-                        </Label>
-                    ))}
-                </Row>
-            </div>
-        )
-    }
-
+    // put Bengaluru at the bottom of the page
     render() {
         console.log(this.props.startApp.onUpdate.getTime(),this.props.startApp.onStart.getTime());
         return (
             <div style={styles.container}>
                 <Space/>
                 {this.renderIntroduction()}
-                <Space/>
-                {this.renderWorkExperience()}
-                <Space/>
-                <Space/>
-                <Space/>
-                <Header size={"medium"} textAlign={"center"}>
-                     <span role="img" aria-label="beer">📍</span> Bengaluru, India
-                </Header>
-                <Space/>
+                <div style={styles.bottomLocation}>
+                    <Header size={"medium"} textAlign={"center"} style={{marginBottom: '20px'}}>
+                         <span role="img" aria-label="location">📍</span> Bengaluru, India
+                    </Header>
+                </div>
             </div>
         );
     }
@@ -175,7 +130,8 @@ const styles = {
         fontSize: '1.3em',
         lineHeight: '1.4em',
         marginTop: '1em',
-        color: '#333'
+        color: '#333',
+        width: '100%'
     },
     a: {
         textDecoration: 'none',
@@ -183,7 +139,14 @@ const styles = {
     },
     container:{
       marginLeft: 0,
-      marginRight: 0
+      marginRight: 0,
+      minHeight: '90vh',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    bottomLocation: {
+        marginTop: 'auto',
+        paddingBottom: '20px'
     },
     technologies:{
         marginTop: '1em'
